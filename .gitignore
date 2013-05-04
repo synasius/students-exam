@@ -1,7 +1,8 @@
 # IDE
-.idea
+.idea/
 
 # Django and Python
+static/
 *.log
 *.pot
 *.pyc
