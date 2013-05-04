@@ -1,6 +1,6 @@
-from datetime import datetime
-from time import strftime
+__author__ = 'Emanuele Palazzetti <emanuele.palazzetti@gmail.com>'
 
+from datetime import datetime
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 

@@ -118,6 +118,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'grappelli',
     'django.contrib.admin',
+    'rest_framework',
     'exams',
 )
 
