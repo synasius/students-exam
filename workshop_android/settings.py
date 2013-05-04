@@ -118,7 +118,10 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'grappelli',
     'django.contrib.admin',
+    'exams',
 )
+
+AUTH_USER_MODEL = 'exams.Student'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
