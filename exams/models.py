@@ -24,7 +24,7 @@ class Course(models.Model):
     department = models.ForeignKey(Department, related_name="courses")
 
     def __unicode__(self):
-        return self.name
+        return u"{} ({} cfu)".format(self.name, self.credits)
 
 
 class Student(AbstractUser):
@@ -34,7 +34,7 @@ class Student(AbstractUser):
     )
 
     gender = models.CharField(max_length=2, choices=GENDER, default='M')
-    exams = models.ManyToManyField(Course, through='Exam')
+    courses = models.ManyToManyField(Course, through='Exam')
 
     class Meta:
         verbose_name = 'Student'
@@ -46,16 +46,16 @@ class Student(AbstractUser):
 
 class Exam(models.Model):
     LAUDE_CHOICES = (
-        (0, 'NO'),
-        (1, 'YES'),
+        ('No', 'No'),
+        ('Yes', 'Yes'),
     )
 
     course = models.ForeignKey(Course)
-    student = models.ForeignKey(Student)
+    student = models.ForeignKey(Student, related_name='exams')
     registration_date = models.DateField('Registration date', null=False, default=datetime.now())
     vote = models.IntegerField(default=0)
-    laude = models.IntegerField(default=0, choices=LAUDE_CHOICES)
+    laude = models.CharField(max_length=3, default='No', choices=LAUDE_CHOICES)
     note = models.CharField(max_length=200)
 
     def __unicode__(self):
-        return u"{}, {}".format(self.registration_date, self.student)
+        return u"{} - {} (laude: {})".format(self.course, self.vote, self.laude)

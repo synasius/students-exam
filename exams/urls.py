@@ -6,8 +6,15 @@ from exams import views
 
 
 urlpatterns = patterns('',
-   url(r'^department/$', views.DepartmentList.as_view()),
-   url(r'^department/(?P<pk>[0-9]+)/$', views.DepartmentDetail.as_view()),
+    # APIs urls
+    url(r'^department/$', views.DepartmentList.as_view()),
+    url(r'^department/(?P<pk>[0-9]+)/$', views.DepartmentDetail.as_view()),
+    url(r'^course/$', views.CourseList.as_view()),
+    url(r'^course/(?P<pk>[0-9]+)/$', views.CourseDetail.as_view()),
+    url(r'^student/$', views.StudentList.as_view()),
+    url(r'^student/(?P<pk>[0-9]+)/$', views.StudentDetail.as_view()),
+    url(r'^exam/$', views.ExamList.as_view()),
+    url(r'^exam/(?P<pk>[0-9]+)/$', views.ExamDetail.as_view()),
 )
 
 urlpatterns = format_suffix_patterns(urlpatterns)
